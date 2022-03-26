@@ -8,13 +8,14 @@
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Arvo", serif;
   --font-code: "Roboto", monospace;
-  --bg-color: #00163f;
+  --bg-color: #1c1c1c;
+  --header-color: #c91274;
   --bg-color-transparent: #00163f80;
   --font-color: #ffffff;
   --btn-bg-color: #ffffff;
   --accent-color: #be7efe;
   --header-shadow: var(--accent-color) 0px 0px 5px;
-  --card-shadow: var(--accent-color) 0px 0px 20px;
+  --card-shadow: var(--bg-color) 0px 0px 10px;
 }
 
 * {
@@ -42,17 +43,31 @@ body {
   overflow: hidden;
 }
 
+
 /* HEADER */
 
 header {
-  background-color: var(--bg-color);
-  box-shadow: var(--header-shadow);
+  background-color: var(--header-color) !important;
+  /* box-shadow: var(--header-shadow); */
 }
 
 header .container {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo-img{
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .menu {
@@ -66,7 +81,7 @@ header .container {
   align-items: center;
   height: 100%;
   text-align: center;
-  margin: 0 auto 0 35vw;
+  margin: 15vh 5vw 0 5vw;
   opacity: 0;
   transform: translateY(10vh);
   transition: all 0.5s ease-in-out;
@@ -101,17 +116,16 @@ header .container {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 7px 10px;
   background: var(--btn-bg-color);
   color: var(--accent-color);
-  font-family: var(--font-secondary);
-  font-style: italic;
-  font-weight: bold;
-  font-size: 1rem;
+  /* font-style: italic;
+  font-weight: bold; */
+  font-size: 0.8rem;
   text-align: center;
   text-transform: capitalize;
   transition: all 0.3s ease;
-  box-shadow: var(--header-shadow);
+  /* box-shadow: var(--header-shadow); */
   cursor: pointer;
   position: relative;
   text-decoration: none;
@@ -125,7 +139,7 @@ header .container {
 }
 
 .wallet-btn {
-  border-radius: 5rem;
+  border-radius: 5px;
   margin-left: 2rem;
   border-color: transparent;
 }
@@ -317,10 +331,11 @@ section {
 /* SLIDDER */
 
 .splide {
-  position: absolute;
+  /* position: absolute;
   top: 90px;
   left: 5rem;
-  z-index: -1;
+  z-index: -1; */
+  display: none !important;
 }
 
 .splide__slide {
@@ -338,6 +353,74 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(3);
+}
+
+
+/* NFT Grid */
+
+.nft-section{
+  /* display: flex; */
+  /* align-items: center; */
+  margin: 10vh 40px 10vh 40px;
+  border-radius: 6px;
+  background-color: var(--header-color);
+}
+
+.grid{
+  margin: 10vh auto;
+  width: 80%;
+}
+
+.grid-heading{
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 40px;
+  text-shadow: 2px 2px 0 var(--accent-color);
+  font-style: italic;
+  margin: 2rem 0;
+  font-size: 3.5rem;
+}
+
+.grid-row{
+  /* margin: 10px 0; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.nft-img{
+  width: '100%';
+  height: 200px;
+}
+
+.grid-card{
+  justify-content: center;
+  box-shadow: var(--card-shadow);
+  min-width: 190px;
+  align-self: center;
+  margin: 0.7% 0.5%;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* footer */
+
+.footer{
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.footer > p{
+  text-align: center;
+}
+
+.footer > div{
+  align-self: center;
+  margin-top: 10px;
 }
 
 /* MEDIA QUERIES */
