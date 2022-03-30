@@ -16,17 +16,50 @@ const layerConfigurations = [
   {
     growEditionSizeTo: 10,
     layersOrder: [
-      { name: "Type" },
-      { name: "Planet" },
-      { name: "Theme" },
-      { name: "Year" },
-      { name: "Color" },
-      { name: "Sound" }
+      { name: "Akira Type" },
+      { name: "Akira Planet" },
+      { name: "Akira Theme" },
+      { name: "Akira Year" },
+      { name: "Akira Color" },
+      { name: "Akira Sound" }
+    ],
+  },
+  {
+    growEditionSizeTo: 20,
+    layersOrder: [
+      { name: "Monolith Type" },
+      { name: "Monolith Planet" },
+      { name: "Monolith Theme" },
+      { name: "Monolith Year" },
+      { name: "Monolith Color" },
+      { name: "Monolith Sound" }
+    ],
+  },
+  {
+    growEditionSizeTo: 30,
+    layersOrder: [
+      { name: "Night Drive Type" },
+      { name: "Night Drive Planet" },
+      { name: "Night Drive Theme" },
+      { name: "Night Drive Year" },
+      { name: "Night Drive Color" },
+      { name: "Night Drive Sound" }
+    ],
+  },
+  {
+    growEditionSizeTo: 40,
+    layersOrder: [
+      { name: "Solaris Type" },
+      { name: "Solaris Planet" },
+      { name: "Solaris Theme" },
+      { name: "Solaris Year" },
+      { name: "Solaris Color" },
+      { name: "Solaris Sound" }
     ],
   },
 ];
 
-const shuffleLayerConfigurations = false;
+const shuffleLayerConfigurations = true;
 
 const debugLogs = false;
 
@@ -53,12 +86,12 @@ const CONTRACT_SYMBOL = 'ODS';
 const METADATA_UPDATABLE = true; // set to false if you don't want to allow metadata updates after minting
 const OWNER_ADDRESS = '0x3a9aC05b4Fe2bE413E1e15E4Dab05873Da320377';
 const TREASURY_ADDRESS = '0x3a9aC05b4Fe2bE413E1e15E4Dab05873Da320377';
-const MAX_SUPPLY = 5000; // The maximum number of NFTs that can be minted. CANNOT BE UPDATED!
+const MAX_SUPPLY = 1000; // The maximum number of NFTs that can be minted. CANNOT BE UPDATED!
 const MINT_PRICE = 0.001; // Minting price per NFT. Rinkeby = ETH, Polygon = MATIC. CANNOT BE UPDATED!
-const TOKENS_PER_MINT = 10; // maximum number of NFTs a user can mint in a single transaction. CANNOT BE UPDATED!
+const TOKENS_PER_MINT = 5; // maximum number of NFTs a user can mint in a single transaction. CANNOT BE UPDATED!
 
 // REQUIRED CONTRACT DETAILS THAT CAN BE UPDATED LATER.
-const PUBLIC_MINT_START_DATE = "2022-03-31T11:30:48+00:00"; // This is required. Eg: 2022-02-08T11:30:48+00:00
+const PUBLIC_MINT_START_DATE = "2022-04-02T11:30:48+00:00"; // This is required. Eg: 2022-02-08T11:30:48+00:00
 
 // OPTIONAL CONTRACT DETAILS THAT CAN BE UPDATED LATER.
 const PRESALE_MINT_START_DATE = "2022-03-26T11:30:48+00:00"; // Optional. Eg: 2022-02-08T11:30:48+00:00
@@ -66,7 +99,7 @@ const ROYALTY_SHARE = 1000; // Percentage of the token price that goes to the ro
 const ROYALTY_ADDRESS = "0x3a9aC05b4Fe2bE413E1e15E4Dab05873Da320377"; // Address that will receive the royalty
 const BASE_URI = null; // only update if you want to manually set the base uri
 const PREREVEAL_TOKEN_URI = null; // only update if you want to manually set the prereveal token uri
-const PRESALE_WHITELISTED_ADDRESSES = ["0x3a9aC05b4Fe2bE413E1e15E4Dab05873Da320377","0xD56355f5e274B096948Aca64790243f400DC34e6"]; // only update if you want to manually set the whitelisted addresses
+const PRESALE_WHITELISTED_ADDRESSES = ["0x3a9aC05b4Fe2bE413E1e15E4Dab05873Da320377"]; // only update if you want to manually set the whitelisted addresses
 
 // ** OPTIONAL **
 let CONTRACT_ADDRESS = "YOUR CONTRACT ADDRESS"; // If you want to manually include it
