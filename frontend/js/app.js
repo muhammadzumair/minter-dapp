@@ -86,6 +86,7 @@ const updateConnectStatus = async () => {
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector('.not-connected');
   const spinner = document.getElementById("spinner");
+  console.log(MetaMaskOnboarding, "metamaskOnbaording--------")
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
@@ -142,6 +143,8 @@ async function checkChain() {
   } else if(chain === 'polygon') {
     chainId = 137;
   }
+  console.log(window.ethereum, "etherummmm=========")
+  console.log(chain, "chainn--------")
   if (window.ethereum.networkVersion !== chainId) {
     try {
       await window.ethereum.request({
