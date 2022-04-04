@@ -86,12 +86,13 @@ const updateConnectStatus = async () => {
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector('.not-connected');
   const spinner = document.getElementById("spinner");
-  console.log(MetaMaskOnboarding, "metamaskOnbaording--------")
+  console.log(MetaMaskOnboarding.isMetaMaskInstalled(), "metamaskOnbaording--------")
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
       onboardButton.innerText = "Connecting...";
       onboardButton.disabled = true;
+      console.log(onboarding, "onboardingggggggggg")
       onboarding.startOnboarding();
       // HIDE SPINNER
       spinner.classList.add('hidden');
