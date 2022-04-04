@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/codeSTACKr/nft-landing-page#readme",
   "dependencies": {
+    "@walletconnect/client": "^1.7.7",
+    "@walletconnect/qrcode-modal": "^1.7.7",
     "node-fetch": "^2.6.7"
   }
 }
