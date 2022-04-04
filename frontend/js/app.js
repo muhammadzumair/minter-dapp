@@ -90,6 +90,7 @@ const updateConnectStatus = async () => {
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
+      window.location.href('https://metamask.app.link/dapp/polite-quokka-62452a.netlify.app')
       onboardButton.innerText = "Connecting...";
       onboardButton.disabled = true;
       console.log(onboarding, "onboardingggggggggg")
