@@ -6,12 +6,11 @@ const isMobileDevice = () => {
 
 function handleEthereum() {
   const { ethereum } = window;
-  console.log(ethereum, 'in handle ethereum')
   if (ethereum && ethereum.isMetaMask) {
-    alert('Ethereum successfully detected!');
+    console.log('Ethereum successfully detected!');
     // Access the decentralized web!
   } else {
-    alert('Please install MetaMask!');
+    console.log('Please install MetaMask!');
   }
 }
 
@@ -26,20 +25,30 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeH2.innerText = welcome_h2;
   welcomeP.innerHTML = welcome_p;
 
-  console.log(window.ethereum, "mil gya window.etherrum");
-  console.log(window.web3, "mil gya web3");
+  // window.web3 = new Web3(window.web3.currentProvider);
+  // console.log(window.web3, "check karooooo")
+  // window.ethereum.enable();
+
+
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
+    console.log(window.web3, "check karooooo111")
     checkChain();
   } else if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
+    console.log(window.web3, "check karooooo")
+    window.ethereum.enable();
+    // return true;
   }
-  else {
-    if(isMobileDevice()){
-      window.location ='https://metamask.app.link/dapp/polite-quokka-62452a.netlify.app/'
-    }
+  else{
+    window.addEventListener('ethereum#initialized', handleEthereum, {
+      once: true,
+    });
+  
+    // If the event is not dispatched by the end of the timeout,
+    // the user probably doesn't have MetaMask installed.
+    setTimeout(handleEthereum, 3000); // 3 seconds
   }
-
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
     await window.web3.eth.getAccounts().then(async (addr) => {
@@ -74,21 +83,20 @@ const updateConnectStatus = async () => {
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector(".not-connected");
   const spinner = document.getElementById("spinner");
-  // console.log(
-  //   MetaMaskOnboarding.isMetaMaskInstalled(),
-  //   "metamaskOnbaording--------"
-  // );
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
-      // window.location.assign('https://metamask.app.link/dapp/polite-quokka-62452a.netlify.app')
-      onboardButton.innerText = "Connecting...";
-      onboardButton.disabled = true;
-      console.log(onboarding, "onboardingggggggggg");
-      onboarding.startOnboarding();
-      // HIDE SPINNER
-      notConnected.classList.remove("hidden");
-      notConnected.classList.add("show-not-connected");
+      // if(isMobileDevice()){
+      //   window.location.assign('https://metamask.app.link/dapp/polite-quokka-62452a.netlify.app')
+      // } else{
+      //   onboardButton.innerText = "Connecting...";
+        onboardButton.disabled = true;
+        console.log(onboarding, "onboardingggggggggg");
+        onboarding.startOnboarding();
+        // HIDE SPINNER
+        notConnected.classList.remove("hidden");
+        notConnected.classList.add("show-not-connected");
+      // }
     };
   } else if (accounts && accounts.length > 0) {
     onboardButton.innerText = `✔ ...${accounts[0].slice(-4)}`;
