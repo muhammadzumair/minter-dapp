@@ -1,7 +1,23 @@
 let accounts;
 
+const isMobileDevice = () => {
+  return "ontouchstart" in window || "onmsgesturechange" in window;
+};
+
+function handleEthereum() {
+  const { ethereum } = window;
+  console.log(ethereum, 'in handle ethereum')
+  if (ethereum && ethereum.isMetaMask) {
+    alert('Ethereum successfully detected!');
+    // Access the decentralized web!
+  } else {
+    alert('Please install MetaMask!');
+  }
+}
+
 // METAMASK CONNECTION
 window.addEventListener("DOMContentLoaded", async () => {
+  console.log(isMobileDevice(), "yoooo");
   const welcomeH1 = document.getElementById("welcomeH1");
   const welcomeH2 = document.getElementById("welcomeH2");
   const welcomeP = document.getElementById("welcomeP");
@@ -10,11 +26,18 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeH2.innerText = welcome_h2;
   welcomeP.innerHTML = welcome_p;
 
+  console.log(window.ethereum, "mil gya window.etherrum");
+  console.log(window.web3, "mil gya web3");
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
     checkChain();
   } else if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
+  }
+  else {
+    if(isMobileDevice()){
+      window.location ='https://metamask.app.link/dapp/polite-quokka-62452a.netlify.app/'
+    }
   }
 
   if (window.web3) {
@@ -51,10 +74,10 @@ const updateConnectStatus = async () => {
   const onboardButton = document.getElementById("connectWallet");
   const notConnected = document.querySelector(".not-connected");
   const spinner = document.getElementById("spinner");
-  console.log(
-    MetaMaskOnboarding.isMetaMaskInstalled(),
-    "metamaskOnbaording--------"
-  );
+  // console.log(
+  //   MetaMaskOnboarding.isMetaMaskInstalled(),
+  //   "metamaskOnbaording--------"
+  // );
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     onboardButton.innerText = "Install MetaMask!";
     onboardButton.onclick = () => {
@@ -64,7 +87,6 @@ const updateConnectStatus = async () => {
       console.log(onboarding, "onboardingggggggggg");
       onboarding.startOnboarding();
       // HIDE SPINNER
-      spinner.classList.add("hidden");
       notConnected.classList.remove("hidden");
       notConnected.classList.add("show-not-connected");
     };
